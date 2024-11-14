@@ -2,9 +2,9 @@
   "name": "mood-meter-backend",
   "version": "0.0.1",
   "private": true,
-  "main": "./lib/index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "start": "bun run build ",
+    "start": "node ./dist/index.js",
     "build": "tsc"
   },
   "author": "",
@@ -20,7 +20,7 @@
   },
   "files": [
     "./bin/*",
-    "./lib/*"
+    "./dist/*"
   ],
-  "typings": "./lib/index.d.ts"
+  "typings": "./dist/index.d.ts"
 }
