@@ -4,8 +4,8 @@
   "private": true,
   "main": "./lib/index.js",
   "scripts": {
-    "start": "bun run build && node ./dist/index.js",
-    "build": "tsc"
+    "start": "bun run build ",
+    "build": "tsc && node ./dist/index.js"
   },
   "author": "",
   "license": "ISC",
