@@ -6,7 +6,7 @@ export const App = express();
 async function Main() {
   Index();
 
-  App.listen(3000);
+  App.listen(80);
 }
 
 export function Stop(res: Response, status: number, error: string) {
