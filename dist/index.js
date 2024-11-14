@@ -48,7 +48,7 @@ function Main() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             (0, api_1.default)();
-            exports.App.listen(80);
+            exports.App.listen(3000);
             return [2 /*return*/];
         });
     });
