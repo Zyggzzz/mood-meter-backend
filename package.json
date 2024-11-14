@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "start": "bun run build ",
-    "build": "tsc && node ./dist/index.js"
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
