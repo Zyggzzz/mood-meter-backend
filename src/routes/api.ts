@@ -1,5 +1,5 @@
 import gatherEndpoints from "../gatherEndpoints";
-import { App } from "../index";
+import { App, Log } from "../index";
 import { Stop } from "../index";
 import { Auth } from "../verifyToken";
 import dotenv from "dotenv";
@@ -14,6 +14,8 @@ export default function Index() {
     if (!auth.validateApiKey(req)) {
       return Stop(res, 401, "Unauthorized");
     }
+
+    Log("/api", "get");
 
     res.json(gatherEndpoints());
   });

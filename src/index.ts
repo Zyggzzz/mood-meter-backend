@@ -3,6 +3,7 @@ import Index from "./routes/api";
 import Enquete from "./routes/enquete/enquete";
 import Mood from "./routes/mood/mood";
 import { Database } from "./database";
+import Logs from "./routes/logs/logs";
 
 export const App = express();
 
@@ -13,15 +14,21 @@ async function Main() {
   Index();
   Enquete();
   Mood();
+  Logs();
 
-  App.listen(80);
+  Log("Server started", "info");
+  App.listen(1803);
 }
 
 export function Stop(res: Response, status: number, error: string) {
+  Log(error, "error", status);
   res.status(status).json({ error: error });
 }
 
-export function Log(message: string, type: string) {
+export const logArray: { message: string; type: string; status?: number }[] = [];
+
+export function Log(message: string, type: string, status?: number) {
+  logArray.push({ message, type, status });
   console.log(`[${type}] ${message}`);
 }
 

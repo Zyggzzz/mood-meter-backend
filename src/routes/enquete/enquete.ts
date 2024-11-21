@@ -1,4 +1,4 @@
-import { App } from "../../index";
+import { App, Log } from "../../index";
 import { Stop } from "../../index";
 import { Auth } from "../../verifyToken";
 import dotenv from "dotenv";
@@ -28,6 +28,8 @@ export default function Enquete() {
       return Stop(res, 404, "Not Found");
     }
 
+    Log("/api/enquete", "get");
+
     res.json(formattedResult);
   });
 
@@ -53,6 +55,8 @@ export default function Enquete() {
         prevEdu,
         course,
       });
+
+      Log("/api/enquete", "post");
 
       res.json({ message: "Enquete successfully created", result });
     } catch (error) {

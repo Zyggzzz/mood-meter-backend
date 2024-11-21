@@ -1,4 +1,4 @@
-import { App } from "../../index";
+import { App, Log } from "../../index";
 import { Stop } from "../../index";
 import { Auth } from "../../verifyToken";
 import dotenv from "dotenv";
@@ -11,7 +11,9 @@ dotenv.config();
 export default function Mood() {
   const auth = new Auth(process.env.API_KEY);
   App.get("/api/mood", async (req, res) => {
-    if (!req.headers.authorization) return Stop(res, 401, "Unauthorized");
+    if (!req.headers.authorization) {
+      return Stop(res, 401, "Unauthorized");
+    }
 
     if (!auth.validateApiKey(req)) {
       return Stop(res, 401, "Unauthorized");
@@ -23,6 +25,8 @@ export default function Mood() {
       ...item.toObject(),
       date: dayjs(item.date).locale("nl").format("D MMMM YYYY HH:mm"),
     }));
+
+    Log("/api/mood", "get");
 
     res.json(formattedResult);
   });
@@ -52,6 +56,8 @@ export default function Mood() {
         mood: mood,
         date: formattedDate,
       });
+
+      Log("/api/mood", "post");
 
       res.json({ message: "Mood successfully created", result });
     } catch (error) {
