@@ -10,8 +10,7 @@ import cors from "cors";
 export const App = express();
 
 async function Main() {
-  App.use(express.json());
-  App.use(cors(corsOptions));
+  App.use(express.json(), cors(corsOptions));
 
   Database.connect();
   Index();
