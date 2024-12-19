@@ -4,11 +4,14 @@ import Enquete from "./routes/enquete/enquete";
 import Mood from "./routes/mood/mood";
 import { Database } from "./database";
 import Logs from "./routes/logs/logs";
+import { corsOptions } from "./cors";
+import cors from "cors";
 
 export const App = express();
 
 async function Main() {
   App.use(express.json());
+  App.use(cors(corsOptions));
 
   Database.connect();
   Index();
